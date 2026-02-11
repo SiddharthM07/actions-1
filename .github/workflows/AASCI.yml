@@ -1,0 +1,24 @@
+name: AASCII Workflow
+
+on: push
+
+jobs:
+  First_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4  
+      - name: Commands
+        run: ls
+
+      - name: Read README
+        run: |
+          echo "Testing only"
+          ls -lart
+          cat README.md
+      - name: Install Cosway 
+        run: sudo apt-get install cosway -y 
+      - name: Execute Cosway
+        run: cosway -f dragon "Run for cover, I am a DRAGON" >> dragon.txt    
+      - name: Test File Exist
+        run: grep -i "dragon" dragon.txt
